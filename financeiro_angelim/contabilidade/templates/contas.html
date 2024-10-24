@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+
+{% block modal %}
+
+{%load static %}
+<link rel = "stylesheet" href= {% static "css/contas.css" %}>
+
+{%load static %}
+<script src={% static "js/contas.js" %}></script>
+
+{%load static%}
+<link rel = "stylesheet" href= {% static "css/modal.css" %}>
+
+
+
+<form action="" class="modal-form">
+                  
+  <h1>Nova conta</h1>
+
+  <div class="modal-div-row">
+    <div class="modal-div-nome">
+      <label for="nome">Nome</label>
+      <input type="text" id="modal-nome" name="nome">
+    </div>
+    <div class="modal-div-cidade">
+      <label for="cidade">Cidade</label>
+      <select name="cidade" class="modal-select-cidade">
+        <option value="" selected>Teresina</option>
+        <option value="">Parnaíba</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="modal-div-status">
+    <label for="status">Status</label>
+    <select name="status" class="modal-select-status">
+      <option value="1" selected>Ativo</option>
+      <option value="0">Inativo</option>
+    </select>
+  </div>
+
+  <div class="modal-div-button modal-div-row">
+    <button type="button" class="button-2" id="modal-cancelar">Cancelar</button>
+      <button type="" class="button-1" id="modal-adicionar">Adicionar</button>
+  </div>
+
+</form>
+
+
+{%endblock%}
+
+
+{% block content %}
+
+    <div class="content-top">
+        <div class="content-top-wellcome">
+          <h1>Contas</h1>
+          <p>Sábado, 12 de outubro</p>
+        </div>
+        
+        <div class="content-top-op">
+          <input type="search" placeholder="Pesquisar">
+          <button class="content-top-button" id="button-add-mov">Nova conta</button>
+        </div>
+      </div>
+      
+      <div class="content-elements">
+        
+        <div class="content-elements-2">
+          <div class="content-reg board">
+            <h1>Contas</h1>
+
+            <table class="table-mov table-base">
+              <tr>
+                <th>Nome da conta</th>
+                <th>Banco</th>
+                <th>Cidade</th>
+                <th>Status</th>
+              </tr>
+
+              <tr>
+                <td>teste</td>
+                <td>teste</td>
+                <td>teste</td>
+                <td>teste</td>
+              </tr>
+              
+            </table>
+
+          </div>
+        </div>
+        
+
+      </div>
+
+{% endblock %}

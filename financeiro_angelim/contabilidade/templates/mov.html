@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+
+
+
+{% block modal %}
+
+{%load static %}
+<link rel = "stylesheet" href= {% static "css/movimentacoes.css" %}>
+
+{%load static %}
+<script src={% static "js/movimentacoes.js" %}></script>
+
+
+
+{%load static%}
+<link rel = "stylesheet" href= {% static "css/modal.css" %}>
+
+
+
+<form action="" class="modal-form">
+                  
+  <h1>Nova movimentação</h1>
+
+  <div class="modal-div-row">
+
+    <div class="modal-div-column">
+      <div class="modal-div-data">
+        <label for="data">Data</label>
+        <input type="date" id="modal-data" name="data">
+      </div>
+
+      <div class="modal-div-motivo">
+        <label for="motivo">Motivo</label>
+        <input type="text" id="modal-motivo" name="motivo">
+      </div>
+
+      <div class="modal-div-valor">
+        <label for="valor">Valor</label>
+        <input type="number" id="modal-valor" name="valor">
+      </div>
+    </div>
+
+    <div class="modal-div-column">
+      <div class="modal-div-conta">
+        <label for="conta">Conta</label>
+        <select name="conta" class="modal-select-conta">
+          <option value="" selected>Conta 1</option>
+          <option value="">Conta 2</option>
+        </select>
+      </div>
+
+      <div class="modal-div-anexo">
+        <label for="anexo">Anexo</label>
+        <input type="file" accept="image/*,.pdf" id="modal-anexo" name="anexo">
+      </div>
+
+      <div class="modal-div-status">
+        <label for="status">Status</label>
+        <select name="status" class="modal-select-status">
+          <option value="" selected>Pago</option>
+          <option value="">A pagar</option>
+        </select>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="modal-div-button modal-div-row">
+    <button type="button" class="button-2" id="modal-cancelar">Cancelar</button>
+      <button type="" class="button-1" id="modal-adicionar">Adicionar</button>
+  </div>
+
+</form>
+
+
+{%endblock%}
+
+
+
+
+
+{% block content %}
+
+    <div class="content-top">
+      <div class="content-top-wellcome">
+        <h1>Movimentações</h1>
+        <p>Sábado, 12 de outubro</p>
+      </div>
+      
+      <div class="content-top-op">
+        <input type="search" placeholder="Pesquisar">
+        <button class="content-top-button" id="button-add-mov">Nova movimentação</button>
+      </div>
+    </div>
+    
+    <div class="content-elements">
+      
+      <div class="content-elements-2">
+        <div class="content-reg board">
+          <h1>Movimentações</h1>
+
+          <table class="table-mov table-base">
+            <tr>
+              <th>Data</th>
+              <th>Motivo</th>
+              <th>Conta</th>
+              <th>Valor</th>
+            </tr>
+
+            <tr>
+              <td>teste</td>
+              <td>teste</td>
+              <td>teste</td>
+              <td>teste</td>
+            </tr>
+            
+          </table>
+
+        </div>
+      </div>
+      
+
+    </div>
+{% endblock %}
