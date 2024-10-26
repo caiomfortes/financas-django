@@ -2,7 +2,6 @@ $(document).ready(function() {
   
   var selectUrl = getCentralUrl()
   const sideOp = document.querySelectorAll('.sidebar a');
-  console.log(sideOp)
   selectUrl = "side-" + selectUrl
   
   sideOp.forEach((item, index) => {

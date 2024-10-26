@@ -7,7 +7,7 @@ import uuid
 class Cidade(models.Model):
     external_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     nome = models.CharField(max_length=50, verbose_name="Nome da cidade", unique=True)
-    ativo = models.BooleanField(verbose_name="Ativo")
+    ativo = models.BooleanField(verbose_name="Ativo", default=True)
     
     class Meta:
         verbose_name = "cidade"
@@ -20,6 +20,8 @@ class Cidade(models.Model):
 class Conta(models.Model):
     external_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     nome = models.CharField(max_length=50, verbose_name="Nome da conta", unique=True)
+    ativo  = models.BooleanField(verbose_name="Ativo", default=True)
+    cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True)
     
     class Meta:
         verbose_name = "conta"

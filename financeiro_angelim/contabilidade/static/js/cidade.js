@@ -19,6 +19,21 @@ $(document).ready(function() {
     })
 
     
+
+    $('#modal-form').submit(function(event) {
+        event.preventDefault();
+        $.ajax({
+            url: "/cidades",
+            type: $(this).attr('method'),
+            data: $(this).serialize(),
+            success: function(response) {
+                if (response) {
+                    $(".modal-form")
+                }
+            }
+        });
+    });
+
 });
 
 

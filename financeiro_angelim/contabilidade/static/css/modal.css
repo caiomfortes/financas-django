@@ -13,6 +13,9 @@
     font-size: 1.3em;
     font-weight: 700;
     color: var(--cor3);
+    margin-bottom: 1%;
+}
+.modal-form .alert-error{
     margin-bottom: 3%;
 }
 

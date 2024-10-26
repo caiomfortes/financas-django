@@ -12,8 +12,8 @@
 
 
 <div class="modal board">
-  <form action="" class="modal-form">
-                  
+  <form method="POST" id="modal-form" class="modal-form">
+    {% csrf_token %}      
     <h1>Nova conta</h1>
   
     <div class="modal-div-row">
