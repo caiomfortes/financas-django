@@ -53,6 +53,8 @@ MIDDLEWARE = [
     
 ]
 
+
+
 ROOT_URLCONF = 'financeiro_angelim.urls'
 
 TEMPLATES = [
@@ -145,3 +147,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR / "uploads/"
 MEDIA_URL = '/uploads/'
+
+
+LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'home'
+
+
+AUTH_USER_MODEL = "users.User"

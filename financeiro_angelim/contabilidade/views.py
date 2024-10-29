@@ -8,34 +8,34 @@ import re
 
 # Create your views here.
 
-# @login_required(login_url="/index")
+@login_required(login_url="/index")
 def home(request):
     todas_mov = Movimentacoes.objects.all().order_by('-data_criacao')
     todas_contas = Conta.objects.all()
     return render(request,'home.html', {"movimentacoes": todas_mov, "contas": todas_contas})
 
-
+@login_required(login_url="/index")
 def home_content(request):
     todas_mov = Movimentacoes.objects.all().order_by('-data_criacao')
     todas_contas = Conta.objects.all()
     return render(request,'home_content.html', {"movimentacoes": todas_mov, "contas": todas_contas})
 
 
-
+@login_required(login_url="/index")
 def movimentacoes(request):
     todas_mov = Movimentacoes.objects.all().order_by('-data_criacao')
     todas_contas = Conta.objects.all()
     return render(request,'mov.html', {"movimentacoes": todas_mov, "contas": todas_contas})
 
 
-
+@login_required(login_url="/index")
 def movimentacoes_content(request):
     todas_mov = Movimentacoes.objects.all().order_by('-data_criacao')
     todas_contas = Conta.objects.all()
     return render(request,'mov_content.html', {"movimentacoes": todas_mov, "contas": todas_contas})
 
 
-
+@login_required(login_url="/index")
 def salvar_mov(request):
     if(request.method == "POST"):
         data = request.POST.get("data")    
@@ -65,7 +65,7 @@ def salvar_mov(request):
 
 
 
-
+@login_required(login_url="/index")
 # página das contas
 def contas(request):
     
@@ -93,6 +93,7 @@ def contas(request):
         todas_cidades = Cidade.objects.all()
         return render(request,'contas.html', {"contas": contas,"cidades": todas_cidades})
 
+@login_required(login_url="/index")
 def contas_content(request):
     todas_cidades = Cidade.objects.all()
     contas = Conta.objects.all()
@@ -102,7 +103,7 @@ def contas_content(request):
 
 
 
-
+@login_required(login_url="/index")
 # página de ciadades
 def cidades(request):
     if(request.method == 'POST'):
@@ -127,6 +128,16 @@ def cidades(request):
         cidades = Cidade.objects.all()
         return render(request,'cidade.html',{"cidades":cidades})
 
+@login_required(login_url="/index")
 def cidades_content(request):
     cidades = Cidade.objects.all()
     return render(request,'cidade_content.html', {"cidades": cidades})
+
+
+@login_required(login_url="/index")
+def config(request):
+    return render(request, "config.html",{})
+
+@login_required(login_url="/index")
+def config_content(request):
+    return render(request, "config_content.html",{})

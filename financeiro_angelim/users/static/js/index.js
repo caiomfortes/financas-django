@@ -1,15 +1,39 @@
 $(document).ready(function() {
-    $('#toggle-password').click(function() {
-      let passwordField = $('#password');
-      let passwordFieldType = passwordField.attr('type');
-      
-      // Toggle between 'password' and 'text'
-      if (passwordFieldType == 'password') {
-        passwordField.attr('type', 'text');
-        $(this).html('<i class="fa fa-eye-slash"></i>'); // Change to eye-slash icon
-      } else {
-        passwordField.attr('type', 'password');
-        $(this).html('<i class="fa fa-eye"></i>'); // Change back to eye icon
-      }
+    
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+
+  
+    $('.form-1').submit(function(event) {
+        event.preventDefault();
+        const csrftoken = getCookie('csrftoken');
+        $.ajax({
+            url: "/index",
+            type: "POST",
+            headers: {"X-CSRFToken": csrftoken },
+            data: $(".form-1").serialize(),
+            success: function(response) {
+                if (response.msg == "sucesso") {
+                    window.location.href = 'home'
+                }
+            }
+        });
     });
-  });
+
+
+
+});
