@@ -20,6 +20,7 @@ $(document).ready(function() {
 
     $("#button-add-mov").click(function(){
         liga_modal(".modal", ".modal-overlay")
+        desliga_alerta()
     })
 
     $("#modal-cancelar").click(function(){
@@ -38,15 +39,32 @@ $(document).ready(function() {
             headers: {"X-CSRFToken": csrftoken },
             data: $("#modal-form").serialize(),
             success: function(response) {
-                if (response) {
+                desliga_alerta()
+                if (response.msg == "adicionado") {
                     $("#modal-form")[0].reset()
                     desliga_modal_loading(".modal-save")
+                }
+                else if(response.msg == "existente"){
+                    alerta_modal_loading(".modal-save", "Já existe uma conta com este nome.")
                 }
             }
         });
     });
 
 });
+
+
+// outras funções
+
+function mensagem_error(mensagem) {
+    $(".alert-error").text(mensagem);
+    $(".alert-error").show();
+}
+
+function desliga_alerta(){
+    $(".alert-error").text("");
+    $(".alert-error").hide();
+}
 
 
 function liga_modal_loading(modal, modal_save){
@@ -108,6 +126,47 @@ function desliga_modal_loading(modal_save){
             },1500)
         })
     },2000)
+}
+
+
+function alerta_modal_loading(modal_save, mensagem){
+    setTimeout(function(){
+        $(modal_save + " #loading").animate({
+            opacity: 0,
+            marginTop: '0'
+        }, 500, function() {
+            // Função a ser executada após a animação
+            $(modal_save + " #loading").hide(300)
+            $(modal_save + " #error").show(300)
+            $(modal_save + " #error").animate({
+                opacity: 1,
+                marginTop: '0'
+            }, 500)
+            setTimeout(function(){
+                $(modal_save).animate({
+                    opacity: 0,
+                    marginTop: '0'
+                }, 500, function(){
+                    $(modal_save).hide();
+                    $(modal_save + " #error").css('opacity', 0)
+                    $(modal_save + " #loading").css('opacity', 1)
+                    $(modal_save + " #loading").show()
+                    $(modal_save + " #error").hide()
+                    $(".sidebar-overlay").animate(
+                        {opacity: 0,marginTop: '0'},500,
+                        function(){
+                            $(this).hide()
+                        })
+                })
+                mensagem_error(mensagem)
+                $(".modal").show()
+                $(".modal").animate({
+                    opacity: 1,
+                    marginTop: '5%'
+                }, 500)
+            },1500)
+        })
+    },1000)
 }
 
 
