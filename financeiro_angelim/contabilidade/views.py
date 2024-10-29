@@ -10,23 +10,31 @@ import re
 
 # @login_required(login_url="/index")
 def home(request):
+    todas_mov = Movimentacoes.objects.all().order_by('-data_criacao')
     todas_contas = Conta.objects.all()
-    return render(request,'home.html', {"contas": todas_contas})
+    return render(request,'home.html', {"movimentacoes": todas_mov, "contas": todas_contas})
 
 
 def home_content(request):
+    todas_mov = Movimentacoes.objects.all().order_by('-data_criacao')
     todas_contas = Conta.objects.all()
-    return render(request,'home_content.html', {"contas": todas_contas})
+    return render(request,'home_content.html', {"movimentacoes": todas_mov, "contas": todas_contas})
 
 
 
 def movimentacoes(request):
+    todas_mov = Movimentacoes.objects.all().order_by('-data_criacao')
     todas_contas = Conta.objects.all()
-    return render(request,'mov.html', {"contas": todas_contas})
+    return render(request,'mov.html', {"movimentacoes": todas_mov, "contas": todas_contas})
+
+
 
 def movimentacoes_content(request):
+    todas_mov = Movimentacoes.objects.all().order_by('-data_criacao')
     todas_contas = Conta.objects.all()
-    return render(request,'mov_content.html', {"contas": todas_contas})
+    return render(request,'mov_content.html', {"movimentacoes": todas_mov, "contas": todas_contas})
+
+
 
 def salvar_mov(request):
     if(request.method == "POST"):
@@ -52,7 +60,6 @@ def salvar_mov(request):
         return JsonResponse(dados)
     
     else:
-        print({"msg":"método inválido"})
         return JsonResponse({"msg":"método inválido"})
 
 
@@ -82,12 +89,14 @@ def contas(request):
             }
             return JsonResponse(data)
     else:
+        contas = Conta.objects.all()
         todas_cidades = Cidade.objects.all()
-        return render(request,'contas.html', {"cidades": todas_cidades})
+        return render(request,'contas.html', {"contas": contas,"cidades": todas_cidades})
 
 def contas_content(request):
     todas_cidades = Cidade.objects.all()
-    return render(request,'contas_content.html', {"cidades": todas_cidades})
+    contas = Conta.objects.all()
+    return render(request,'contas_content.html', {"contas": contas,"cidades": todas_cidades})
 
 
 
@@ -115,7 +124,9 @@ def cidades(request):
             return JsonResponse(data)
 
     else:
-        return render(request,'cidade.html',{})
+        cidades = Cidade.objects.all()
+        return render(request,'cidade.html',{"cidades":cidades})
 
 def cidades_content(request):
-    return render(request,'cidade_content.html', {})
+    cidades = Cidade.objects.all()
+    return render(request,'cidade_content.html', {"cidades": cidades})

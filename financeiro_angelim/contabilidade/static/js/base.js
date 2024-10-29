@@ -1,5 +1,7 @@
 $(document).ready(function() {
   
+  setInterval(data_atual, 1000);
+
   var selectUrl = getCentralUrl()
   const sideOp = document.querySelectorAll('.sidebar a');
   selectUrl = "side-" + selectUrl
@@ -22,7 +24,6 @@ $(document).ready(function() {
       });
   });
   
-
   
   $('.sidebar a').click(function(e) {
     e.preventDefault();
@@ -39,7 +40,34 @@ $(document).ready(function() {
     });
   });
 
+  
+  
+
 });
+
+function relogio(data, texto) {
+  const agora = new Date();
+  const horas = agora.getHours().toString().padStart(2, '0');
+  const minutos = agora.getMinutes().toString().padStart(2, '0');
+  $(texto).text(data + `, às ${horas}:${minutos}`);
+}
+
+function data_atual(){
+  var dataAtual = new Date();
+
+  // Formatar a data
+  var diasDaSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+  var mesesDoAno = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+  var diaSemana = diasDaSemana[dataAtual.getDay()];
+  var diaMes = dataAtual.getDate();
+  var mes = mesesDoAno[dataAtual.getMonth()];
+
+  var dataFormatada = diaSemana + ", " + diaMes + " de " + mes;
+
+  // Inserir a data formatada no HTML
+  relogio(dataFormatada, ".content-top-wellcome p")
+}
 
 
 function getCentralUrl() {

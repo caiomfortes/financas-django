@@ -61,7 +61,7 @@
 <div class="content-top">
     <div class="content-top-wellcome">
       <h1>Contas</h1>
-      <p>Sábado, 12 de outubro</p>
+      <p></p>
     </div>
     
     <div class="content-top-op">
@@ -78,19 +78,24 @@
 
       <table class="table-mov table-base">
         <tr>
-          <th>Nome da conta</th>
-          <th>Banco</th>
+          <th>Nome</th>
           <th>Cidade</th>
           <th>Status</th>
         </tr>
 
-        <tr>
-          <td>teste</td>
-          <td>teste</td>
-          <td>teste</td>
-          <td>teste</td>
-        </tr>
-        
+        {% for conta in contas %}
+          <tr>
+            <td> {{ conta.nome }} </td>
+            <td> {{ conta.cidade }} </td>
+            <td>
+              {% if conta.ativo == True %}
+                Ativo
+              {% else %}
+                Desativado
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
       </table>
 
     </div>

@@ -49,7 +49,7 @@
 <div class="content-top">
   <div class="content-top-wellcome">
     <h1>Cidades (Campus)</h1>
-    <p>Sábado, 12 de outubro</p>       
+    <p></p> 
   </div>
   
   <div class="content-top-op">
@@ -69,10 +69,18 @@
           <th>Status</th>
         </tr>
 
-        <tr>
-          <td>teste</td>
-          <td>teste</td>
-        </tr>
+        {% for cidade in cidades %}
+          <tr> 
+            <td>{{ cidade.nome }}</td>
+            <td>
+              {% if cidade.ativo == True %}
+                Ativo
+              {% else %}
+                Desativado
+              {% endif %}
+            </td>
+          </tr>
+        {%endfor%}
         
       </table>
 

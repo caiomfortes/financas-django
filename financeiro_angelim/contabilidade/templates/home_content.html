@@ -82,7 +82,7 @@
 
     <div class="content-top-wellcome">
       <h1>Olá, Caio</h1>
-      <p>Sábado, 12 de outubro</p>
+      <p></p>
     </div>
     
     <button class="content-top-button" id="button-add-mov">Nova movimentação</button>
@@ -108,16 +108,22 @@
           <tr>
             <th>Data</th>
             <th>Motivo</th>
-            <th>Conta</th>
             <th>Valor</th>
+            <th>Conta</th>
+            <th>Status</th>
+            <th>Anexo</th>
           </tr>
 
-          <tr>
-            <td>teste</td>
-            <td>teste</td>
-            <td>teste</td>
-            <td>teste</td>
-          </tr>
+          {% for mov in movimentacoes %}
+            <tr>
+              <td>{{mov.data}}</td>
+              <td>{{mov.motivo}}</td>
+              <td>{{mov.valor}}</td>
+              <td>{{mov.conta}}</td>
+              <td>{{mov.status}}</td>
+              <td><a>Anexo<a></td>
+            </tr>
+          {% endfor %}
           
         </table>
 

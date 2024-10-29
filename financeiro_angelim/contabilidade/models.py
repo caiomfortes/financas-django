@@ -43,7 +43,7 @@ class Movimentacoes(models.Model):
     conta = models.ForeignKey(Conta, verbose_name="Conta", on_delete=models.SET_NULL, null=True, blank=False)
     anexo=models.FileField(verbose_name="Anexo", upload_to="anexo_mov/%Y/%m", max_length=100, null=True, blank=True)
     status = models.CharField(verbose_name="Status", max_length=15, null=False, blank=False)
-    data_criacao = models.DateField(verbose_name="Data de criação", auto_now_add=True, blank=False, null=False)
+    data_criacao = models.DateTimeField(verbose_name="Data de criação", auto_now_add=True, blank=False, null=False)
 
     class Meta:
         verbose_name = "Movimentação"
