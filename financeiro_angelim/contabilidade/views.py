@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from django.views.decorators.csrf import csrf_protect
 import re
+from .calendar import test_calendar
 
 # Create your views here.
-
 @login_required(login_url="/index")
 def home(request):
     todas_mov = Movimentacoes.objects.all().order_by('-data_criacao')
@@ -141,3 +141,10 @@ def config(request):
 @login_required(login_url="/index")
 def config_content(request):
     return render(request, "config_content.html",{})
+
+
+
+def teste(request):
+    results = test_calendar()
+    context = {"results": results}
+    return render(request, 'teste.html', context)
