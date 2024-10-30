@@ -16,6 +16,15 @@
     margin-bottom: 3%;
 }
 
+.modal-form .alert-error{
+    margin-top: 1%;
+    color: #ff5e5e;
+    font-size: 0.7em;
+    font-style: italic;
+    font-weight: 500;
+    display: none;
+}
+
 .modal-div-column{
     display: flex;
     flex-direction: column;
@@ -102,4 +111,31 @@ color: var(--cor2);
 .modal-div-button{
     margin-top: 5%;
     justify-content: space-around;
+}
+
+
+.modal-div-progress{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--cor2);
+}
+
+.modal-div-progress #loading{
+    opacity: 1;
+}
+
+.modal-div-progress #saved{
+    opacity: 0;
+    display: none;
+}
+
+.modal-div-progress #error{
+    opacity: 0;
+    display: none;
+    color: #ff5e5e;
 }

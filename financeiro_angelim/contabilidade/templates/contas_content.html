@@ -10,49 +10,58 @@
 <link rel = "stylesheet" href= {% static "css/modal.css" %}>
 
 
-
 <div class="modal board">
-  <form action="" class="modal-form">
-                  
+  <form method="POST" id="modal-form" class="modal-form">
+    {% csrf_token %}            
     <h1>Nova conta</h1>
   
     <div class="modal-div-row">
       <div class="modal-div-nome">
         <label for="nome">Nome</label>
-        <input type="text" id="modal-nome" name="nome">
+        <input type="text" id="modal-nome" name="nome" required>
       </div>
       <div class="modal-div-cidade">
         <label for="cidade">Cidade</label>
-        <select name="cidade" class="modal-select-cidade">
-          <option value="" selected>Teresina</option>
-          <option value="">Parnaíba</option>
+        <select name="cidade" class="modal-select-cidade" required>
+          {% for cidade in cidades %}
+            <option value={{ cidade.external_id }}>{{ cidade.nome }}</option>
+          {% endfor %}
         </select>
       </div>
     </div>
-  
+
+    <p class="alert-error modal-div-row">Alerta</p>
+
     <div class="modal-div-status">
       <label for="status">Status</label>
-      <select name="status" class="modal-select-status">
-        <option value="1" selected>Ativo</option>
-        <option value="0">Inativo</option>
+      <select name="status" class="modal-select-status" required>
+        <option value="True" selected>Ativo</option>
+        <option value="False">Inativo</option>
       </select>
     </div>
-  
+
     <div class="modal-div-button modal-div-row">
       <button type="button" class="button-2" id="modal-cancelar">Cancelar</button>
-      <button type="" class="button-1" id="modal-adicionar">Adicionar</button>
+        <button type="submit" class="button-1" id="modal-adicionar">Adicionar</button>
     </div>
   
   </form>
 </div>
+
 <div class="modal-overlay"></div>
 
-
+<div class="board modal-save" id="modal-save">
+  <div class="modal-div-progress">
+    <p id="loading">Carregando...</p>
+    <p id="saved">Concluído.</p>
+    <p id="error">Inválido.</p>
+  </div>
+</div>
 
 <div class="content-top">
     <div class="content-top-wellcome">
       <h1>Contas</h1>
-      <p>Sábado, 12 de outubro</p>
+      <p></p>
     </div>
     
     <div class="content-top-op">
@@ -69,19 +78,24 @@
 
       <table class="table-mov table-base">
         <tr>
-          <th>Nome da conta</th>
-          <th>Banco</th>
+          <th>Nome</th>
           <th>Cidade</th>
           <th>Status</th>
         </tr>
 
-        <tr>
-          <td>teste</td>
-          <td>teste</td>
-          <td>teste</td>
-          <td>teste</td>
-        </tr>
-        
+        {% for conta in contas %}
+          <tr>
+            <td> {{ conta.nome }} </td>
+            <td> {{ conta.cidade }} </td>
+            <td>
+              {% if conta.ativo == True %}
+                Ativo
+              {% else %}
+                Desativado
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
       </table>
 
     </div>

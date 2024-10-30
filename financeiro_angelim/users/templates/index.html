@@ -19,20 +19,19 @@
     
     
     <main class="main">
-        <form method="POST" action="{% url 'redirect_login' %}" class="main-form form-1 div-column">
+        <form method="POST" class="main-form form-1 div-column">
             {% csrf_token %}
-
             <div class="main-form-div div-column">
-                {% comment %} <h1 class="h1">Angelim Count</h1> {% endcomment %}
+                <h1 class="h1">Angelim Count</h1>
                 
                 <div class="div-row div-input">
                     <label for="email">E-mail</label>
-                    <input type="text" name="email" id="email">
+                    <input type="text" name="email" id="email" required>
                 </div>
                 
                 <div class="div-row div-input">
                     <label for="password">Senha</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" required>
                 </div>
                 
                 <a href="" class="recupera">Esqueci minha senha.</a>

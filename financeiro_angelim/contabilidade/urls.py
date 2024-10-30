@@ -10,5 +10,9 @@ urlpatterns = [
     path("contas", contas, name="contas"),
     path("contas/content", contas_content, name="contas"),
     path("cidades", cidades, name="cidades"),
-    path("cidades/content", cidades_content, name="cidade"),
+    path("cidades/content", cidades_content, name="cidades"),
+    path("salvar-mov", salvar_mov,name="salvar movimentacao"),
+    path("config",config,name="configuracoes"),
+    path("config/content",config_content,name="configuracoes"),
+    path("teste",teste,name="teste")
 ]
