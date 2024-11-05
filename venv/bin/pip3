@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/caiofortes/Desktop/CAIO/2 - CAIO FORTES DSGN/4 - OUTROS/financeiro-angelim/venv/bin/python3.12" "$0" "$@"
+'''exec' "/Users/caiofortes/Library/CloudStorage/OneDrive-Pessoal/Área de Trabalho/CAIO/DEVELOPER/financeiro-angelim/venv/bin/python3.12" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

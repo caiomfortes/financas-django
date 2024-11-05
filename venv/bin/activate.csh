@@ -9,7 +9,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV "/Users/caiofortes/Desktop/CAIO/2 - CAIO FORTES DSGN/4 - OUTROS/financeiro-angelim/venv"
+setenv VIRTUAL_ENV "/Users/caiofortes/Library/CloudStorage/OneDrive-Pessoal/Área de Trabalho/CAIO/DEVELOPER/financeiro-angelim/venv"
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"

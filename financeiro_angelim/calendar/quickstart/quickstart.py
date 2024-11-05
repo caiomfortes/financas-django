@@ -1,6 +1,5 @@
 import datetime
 import os.path
-import google
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -27,7 +26,7 @@ def main():
       creds.refresh(Request())
     else:
       flow = InstalledAppFlow.from_client_secrets_file(
-          "credentials.json", SCOPES
+          "/Users/caiofortes/Library/CloudStorage/OneDrive-Pessoal/Área de Trabalho/CAIO/DEVELOPER/financeiro-angelim/financeiro_angelim/calendar/quickstart/credentials.json", SCOPES
       )
       creds = flow.run_local_server(port=0)
     # Save the credentials for the next run

@@ -39,10 +39,10 @@ deactivate nondestructive
 if [ "${OSTYPE:-}" = "cygwin" ] || [ "${OSTYPE:-}" = "msys" ] ; then
     # transform D:\path\to\venv to /d/path/to/venv on MSYS
     # and to /cygdrive/d/path/to/venv on Cygwin
-    export VIRTUAL_ENV=$(cygpath "/Users/caiofortes/Desktop/CAIO/2 - CAIO FORTES DSGN/4 - OUTROS/financeiro-angelim/venv")
+    export VIRTUAL_ENV=$(cygpath "/Users/caiofortes/Library/CloudStorage/OneDrive-Pessoal/Área de Trabalho/CAIO/DEVELOPER/financeiro-angelim/venv")
 else
     # use the path as-is
-    export VIRTUAL_ENV="/Users/caiofortes/Desktop/CAIO/2 - CAIO FORTES DSGN/4 - OUTROS/financeiro-angelim/venv"
+    export VIRTUAL_ENV="/Users/caiofortes/Library/CloudStorage/OneDrive-Pessoal/Área de Trabalho/CAIO/DEVELOPER/financeiro-angelim/venv"
 fi
 
 _OLD_VIRTUAL_PATH="$PATH"
