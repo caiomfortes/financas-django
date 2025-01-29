@@ -1,0 +1,91 @@
+{%load static %}
+<link rel = "stylesheet" href= {% static "css/cidade.css" %}>
+
+{%load static %}
+<script src={% static "js/cidade.js" %}></script>
+
+
+{%load static%}
+<link rel = "stylesheet" href= {% static "css/modal.css" %}>
+
+
+<div class="modal board">
+  <form method="POST" id="modal-form" class="modal-form">
+    {% csrf_token %}
+    <h1>Nova cidade</h1>
+    <div class="modal-div-row">
+      <div class="modal-div-nome">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="modal-nome" name="nome" required>
+      </div>
+      <div class="modal-div-status">
+        <label for="status">Status</label>
+        <select name="status" id="modal-status" class="modal-select-status" required>
+          <option value="True" selected>Ativo</option>
+          <option value="False">Inativo</option>
+        </select>
+      </div>
+    </div>
+
+    <p class="alert-error modal-div-row">Alerta</p>
+    
+    <div class="modal-div-button modal-div-row">
+      <button type="button" class="button-2" id="modal-cancelar">Cancelar</button>
+      <button type="submit" class="button-1" id="modal-adicional">Adicionar</button>
+    </div>
+
+  </form>
+</div>
+<div class="modal-overlay"></div>
+
+<div class="board modal-save" id="modal-save">
+  <div class="modal-div-progress">
+    <p id="loading">Carregando...</p>
+    <p id="saved">Concluído.</p>
+    <p id="error">Inválido.</p>
+  </div>
+</div>
+
+<div class="content-top">
+  <div class="content-top-wellcome">
+    <h1>Cidades (Campus)</h1>
+    <p></p> 
+  </div>
+  
+  <div class="content-top-op">
+    <input type="search" placeholder="Pesquisar">
+    <button class="content-top-button" id="button-add-mov">Nova cidade</button>
+  </div>
+</div>
+
+<div class="content-elements">
+  
+  <div class="content-elements-2">
+    <div class="content-reg board">
+
+      <table class="table-mov table-base">
+        <tr>
+          <th>Nome da cidade</th>
+          <th>Status</th>
+        </tr>
+
+        {% for cidade in cidades %}
+          <tr> 
+            <td>{{ cidade.nome }}</td>
+            <td>
+              {% if cidade.ativo == True %}
+                Ativo
+              {% else %}
+                Desativado
+              {% endif %}
+            </td>
+          </tr>
+        {%endfor%}
+        
+      </table>
+
+    </div>
+  </div>
+  
+
+</div>
